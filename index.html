@@ -36,7 +36,7 @@
         sendBlockedNotification(event, 'Alt + -');
       }
 
-      if (event.altKey && event.shiftKey && event.key == 'KeyM') {
+      if (event.altKey && event.shiftKey && event.code == 'KeyM') {
         event.preventDefault();
         event.stopPropagation();
         sendBlockedNotification(event, 'Alt + Shift + M');
