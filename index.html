@@ -1,0 +1,50 @@
+<html>
+
+<head>
+  <title>ChromeOS Shortcut Blocker</title>
+</head>
+
+<body>
+  <div id="intro">
+    <h1>Shortcut Blocker</h1>
+    <br>
+    Currently Blocking the following shortcuts:
+    <li>Alt + -</li>
+    <li>Ctrl + /</li>
+    <li>Alt + Shift + M</li>
+  </div>
+  <div id="blocking-notification"></div>
+  <script>
+    function sendBlockedNotification(event, text) {
+      if (event.type === 'keyup') {
+        return;
+      }
+      const blockingNotification = document.getElementById('blocking-notification');
+      blockingNotification.innerHTML += 'Blocked ' + text + '<br>';
+    }
+
+    function handler(event) {
+      if (event.ctrlKey && event.code === 'Slash') {
+        event.preventDefault();
+        event.stopPropagation();
+        sendBlockedNotification(event, 'Ctrl + /');
+      }
+
+      if (event.altKey && event.code == 'Minus') {
+        event.preventDefault();
+        event.stopPropagation();
+        sendBlockedNotification(event, 'Alt + -');
+      }
+
+      if (event.altKey && event.shiftKey && event.key == 'KeyM') {
+        event.preventDefault();
+        event.stopPropagation();
+        sendBlockedNotification(event, 'Alt + Shift + M');
+      }
+    }
+    document.addEventListener("keydown", handler);
+    document.addEventListener("keyup", handler);
+  </script>
+</body>
+
+</html>
