@@ -1,1 +1,1 @@
-# chromeos-shortcut-blocker.github.io
+# chromeos-shortcut-blocker
