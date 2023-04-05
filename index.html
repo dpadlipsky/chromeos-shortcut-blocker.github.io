@@ -1,5 +1,14 @@
 <html>
 
+<style>
+  #version {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+  }
+
+</style>
+
 <head>
   <title>ChromeOS Shortcut Blocker</title>
 </head>
@@ -14,6 +23,7 @@
     <li>Alt + Shift + M</li>
   </div>
   <div id="blocking-notification"></div>
+  <div id="version">v1.0.1</div>
   <script>
     function sendBlockedNotification(event, text) {
       if (event.type === 'keyup') {
@@ -24,19 +34,21 @@
     }
 
     function handler(event) {
+      console.log(event)
       if (event.ctrlKey && event.code === 'Slash') {
         event.preventDefault();
         event.stopPropagation();
         sendBlockedNotification(event, 'Ctrl + /');
       }
 
-      if (event.altKey && event.code == 'Minus') {
+      if (event.altKey && event.code === 'Minus') {
         event.preventDefault();
         event.stopPropagation();
         sendBlockedNotification(event, 'Alt + -');
       }
 
-      if (event.altKey && event.shiftKey && event.code == 'KeyM') {
+      if (event.altKey && event.shiftKey && event.code === 'KeyM') {
+        console.log('HERE')
         event.preventDefault();
         event.stopPropagation();
         sendBlockedNotification(event, 'Alt + Shift + M');
