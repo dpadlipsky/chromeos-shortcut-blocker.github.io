@@ -26,9 +26,10 @@
     <li>Ctrl + /</li>
     <li>Alt + Shift + M</li>
     <li>Meta + D</li>
+    <li>Meta</li>
   </div>
   <div id="blocking-notification"></div>
-  <div id="version">v1.1.0</div>
+  <div id="version">v1.1.1</div>
   <script>
     function sendBlockedNotification(event, text) {
       if (event.type === 'keyup') {
@@ -64,6 +65,11 @@
         sendBlockedNotification(event, 'Meta + D');
       }
 
+      if (event.code === 'MetaLeft') {
+        event.preventDefault();
+        event.stopPropagation();
+        sendBlockedNotification(event, 'Meta');
+      }
     }
     document.addEventListener("keydown", handler);
     document.addEventListener("keyup", handler);
