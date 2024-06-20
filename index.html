@@ -25,6 +25,7 @@
     <li>Alt + -</li>
     <li>Ctrl + /</li>
     <li>Alt + Shift + M</li>
+    <li>Meta + D</li>
   </div>
   <div id="blocking-notification"></div>
   <div id="version">v1.0.1</div>
@@ -52,11 +53,17 @@
       }
 
       if (event.altKey && event.shiftKey && event.code === 'KeyM') {
-        console.log('HERE')
         event.preventDefault();
         event.stopPropagation();
         sendBlockedNotification(event, 'Alt + Shift + M');
       }
+      
+      if (event.metaKey && event.code === 'KeyD') {
+        event.preventDefault();
+        event.stopPropagation();
+        sendBlockedNotification(event, 'Meta + D');
+      }
+
     }
     document.addEventListener("keydown", handler);
     document.addEventListener("keyup", handler);
